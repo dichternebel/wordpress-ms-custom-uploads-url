@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Rule for /files/(.*)
+  RewriteRule ^files/(.*)$ /wp-content/plugins/ms-custom-uploads-url/handle-file-requests.php?file=$1 [L,QSA]
+  # Rule for /subsite/files/(.*) when using multisite with subdirectories
+  RewriteRule ^(.*)/files/(.*)$ /wp-content/plugins/ms-custom-uploads-url/handle-file-requests.php?file=$2 [L,QSA]
+</IfModule>

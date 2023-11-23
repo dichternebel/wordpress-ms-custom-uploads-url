@@ -1,0 +1,14 @@
+<system.webServer>
+  <rewrite>
+    <rules>
+      <rule name="Rule for /files/(.*)" stopProcessing="true">
+        <match url="^files/(.*)" />
+        <action type="Rewrite" url="wp-content/plugins/ms-custom-uploads-url/handle-file-requests.php?file={R:1}" appendQueryString="false" />
+      </rule>
+      <rule name="Rule for /subsite/files/(.*) when using multisite with subdirectories" stopProcessing="true">
+        <match url="(.*)/files/(.*)" />
+        <action type="Rewrite" url="wp-content/plugins/ms-custom-uploads-url/handle-file-requests.php?file={R:2}" appendQueryString="false" />
+      </rule>
+    </rules>
+  </rewrite>
+</system.webServer>

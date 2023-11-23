@@ -1,0 +1,10 @@
+server {
+  # Rule for /files/(.*)
+  location ~ ^/files/(.*) {
+      rewrite ^/files/(.*)$ /wp-content/plugins/ms-custom-uploads-url/handle-file-requests.php?file=$1 last;
+  }
+  # Rule for /subsite/files/(.*) when using multisite with subdirectories
+  location ~ ^(.*)/files/(.*) {
+      rewrite ^(.*)/files/(.*)$ /wp-content/plugins/ms-custom-uploads-url/handle-file-requests.php?file=$2 last;
+  }
+}
